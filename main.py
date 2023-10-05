@@ -17,10 +17,10 @@ def decrypt(encrypted_message, key):
 
 key = 3
 
-message = input("Zadej text, ktery chces zasifrovat: ")
+message = input("Zadej zpravu, ktery chces zasifrovat: ")
 
 encrypted_message = encrypt(message, key)
-print("Zasifrovany kod je:", encrypted_message)
+print("Zasifrovany zprava je:", encrypted_message)
 
-decrypted_text = decrypt(encrypted_message, key)
-print("Desifrovany kod je:", decrypted_text)
+decrypted_message = decrypt(encrypted_message, key)
+print("Desifrovany zprava je:", decrypted_message)
