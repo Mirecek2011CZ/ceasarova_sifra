@@ -1,12 +1,26 @@
-def encode(key, message):
-    
-    final_text = " "
-    
+def encrypt(message, key):
+    encrypted_message = ""
+
     for i in message:
-        final_text = final_text + chr((ord(i) - 65 + key) % 26 + 65)
-    return final_text
+        if i.isalpha():
+            if 'a' <= i <= 'z':
+                encrypted_message += chr(((ord(i) - ord('a') + key) % 26) + ord('a'))
+            elif 'A' <= i <= 'Z':
+                encrypted_message += chr(((ord(i) - ord('A') + key) % 26) + ord('A'))
+        else:
+            encrypted_message += i
 
-def decode(key, message):
-    return encode(-key, message)
+    return encrypted_message
 
-print(encode(1, "AZB"))
+def decrypt(encrypted_message, key):
+    return encrypt(encrypted_message, -key)
+
+key = 3
+
+message = input("Zadej text, ktery chces zasifrovat: ")
+
+encrypted_message = encrypt(message, key)
+print("Zasifrovany kod je:", encrypted_message)
+
+decrypted_text = decrypt(encrypted_message, key)
+print("Desifrovany kod je:", decrypted_text)
